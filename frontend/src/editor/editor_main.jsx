@@ -48,6 +48,7 @@ export default function Editor() {
     if (!quillRef.current) return;
     const quill = quillRef.current.getEditor();
 
+    //gets clipboard data
     const handlePaste = (e) => {
       const pasted = e.clipboardData.getData('text/plain').trim();
       if (!pasted) return;
@@ -59,6 +60,7 @@ export default function Editor() {
       });
     };
 
+    //paste triggering event
     quill.root.addEventListener('paste', handlePaste);
 
     return () => {

@@ -8,27 +8,45 @@ data = db.table("data")
 users = db.table("users")
 query = Query()
 
+staff = db.table("staff")
 documents = db.table("documents")
 
-def generate_unique_key(length=16):
-   
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
 
 
 
-def register_users(username,password,role,user_id,user_key):
-    if users.contains((query.username == username) & (query.password == password) & (query.user_id == user_id)):
+def register_users_student(username,password):
+    if users.contains((query.username == username) & (query.password == password)):
         print("user already exists")
         return "-1"
-    users.insert({"username":username,"password":password,"user_key":user_key,"user_id":user_id,"role":role})
+    print(password)
+    users.insert({"username":username,"password":password})
     return "1"
 
-def authenticate_users(username,password,role,userkey):
-    if users.contains((query.username == username) & (query.password == password) & (query.user_key == userkey)):
+def login_student(username,password,role):
+    if users.contains((query.username == username) & (query.password == password)):
         return "1"
     else:
         return "-1"
+    
+def register_users_staff(username,password):
+    if staff.contains((query.username == username) & (query.password == password)):
+        print("user already exists")
+        return "-1"
+    print(password)
+    staff.insert({"username":username,"password":password})
+    return "1"
 
+def login_staff(username,password,role):
+    if staff.contains((query.username == username) & (query.password == password)):
+        return "1"
+    else:
+        return "-1"
+    
+    
+
+
+def insert_document(contents,us):
+    pass
 
 def get_document(document_id,user_id):
     pass
@@ -38,4 +56,8 @@ def storeContent(assignment_number,html_content,copy_content):
 
 def get_all_documents(userid):
     #return all document ids.
+    pass
+
+
+def compare_documents(document1,document2):
     pass

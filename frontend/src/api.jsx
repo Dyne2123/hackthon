@@ -30,7 +30,7 @@ export function getEditorContent() {
     .then(response => response.json())
     .then(data => {
       console.log("Server response: ", data);
-      return data;  // 
+      return data;  
     })
     .catch(error => {
       console.error("API error:", error);

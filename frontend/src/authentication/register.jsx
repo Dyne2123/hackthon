@@ -6,7 +6,6 @@ export default function Register() {
   
 
  
-  const [studentId, setStudentId] = useState("");
   const [studentUsername, setStudentUsername] = useState("");
   const [studentPassword, setStudentPassword] = useState("");
   const [staffId, setStaffId] = useState("");
@@ -19,7 +18,6 @@ export default function Register() {
     if (selected === "student") {
     
       console.log("Student Data:", {
-        studentId,
         studentUsername,
         studentPassword,
       });
@@ -28,11 +26,12 @@ export default function Register() {
             headers:{
                 'Content-Type':'application/json'
             },
-            body: JSON.stringify({"studentUserName":studentUsername,"studentPassword":studentPassword,"studentId":studentId,"role":"student"})
+            body: JSON.stringify({"studentUserName":studentUsername,"studentPassword":studentPassword,"role":"student"})
             })
             .then(response => response.json())
             .then(data => {
                 console.log("Server response: ",data);
+                
             }).catch(error => {
                 console.error(error);
 
@@ -77,12 +76,7 @@ export default function Register() {
         {selected === "student" && (
           <div>
             <h2>Student Registration</h2>
-            <input
-              type="text"
-              placeholder="Student ID"
-              value={studentId}
-              onChange={(e) => setStudentId(e.target.value)}
-            />{" "}
+            {" "}
             <br />
             <input
               type="text"
