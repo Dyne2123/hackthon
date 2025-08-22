@@ -1,0 +1,13 @@
+{
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:backend}/instance/data.db",
+            "name": "Hackthon",
+            "group": "database"
+        }
+    ],
+    "CodeGPT.apiKey": "OpenAI"
+}

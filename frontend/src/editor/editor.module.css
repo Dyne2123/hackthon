@@ -1,0 +1,9 @@
+.editor{
+    height: 50vh;
+    width: 70vw;
+}
+
+.outer{
+    display: flex;
+    flex-direction: column;
+}
